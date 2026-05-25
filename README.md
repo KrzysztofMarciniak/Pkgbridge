@@ -4,6 +4,30 @@ pkgbridge is a Linux package translation tool that converts package definitions 
 
 ---
 
+## 📚 Libraries
+
+pkgbridge uses a small set of carefully chosen dependencies to keep the system lightweight, fast, and modular.
+
+### 🧭 Core dependencies
+
+* **CLI11**
+  Used for command-line parsing and subcommand routing.
+
+* **spdlog**
+  High-performance logging library used for debugging and system tracing during parsing and transformation stages.
+
+* **JSON library (required for IR processing)**
+  pkgbridge requires a JSON backend for reading and writing the intermediate representation (IR).
+  The JSON implementation is abstracted through `json_service`, allowing multiple backends.
+
+  Supported / planned implementations:
+
+  * **yyjson** *(recommended)* `[ ]`
+  * **cJSON** `[ ]`
+
+* *(more backends may be added in the future)*
+
+
 ## 🧠 Core Idea
 
 pkgbridge translates package formats through a shared IR format called **pkgbridge IR** (JSON-based).
@@ -64,7 +88,6 @@ commands/
 services/
    ├── package_service
    ├── transform_service
-   ├── json_service (abstraction layer)
 ```
 
 ---
