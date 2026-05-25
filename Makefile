@@ -1,5 +1,5 @@
 CXX ?= g++
-CXXFLAGS ?= -std=c++23 -Wall -Wextra -Isrc
+CXXFLAGS ?= -std=c++23 -Wall -Wextra -Isrc     -Ithird_party/CLI11/include -Ithird_party/spdlog/include
 
 TARGET = pkgbridge
 
