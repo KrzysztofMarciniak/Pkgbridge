@@ -1,6 +1,10 @@
 #pragma once
 
-class PkgbridgeOutCommand {
+#include "commands/command.h"
+
+class PkgbridgeOutCommand : public Command {
 public:
-    static int run();
+    CommandInfo info() const override;
+
+    int run(const AppContext& ctx) override;
 };

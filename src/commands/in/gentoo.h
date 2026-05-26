@@ -1,6 +1,10 @@
 #pragma once
 
-class GentooInCommand {
+#include "commands/command.h"
+
+class GentooInCommand : public Command {
 public:
-    static int run();
+    CommandInfo info() const override;
+
+    int run(const AppContext& ctx) override;
 };

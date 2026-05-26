@@ -1,10 +1,30 @@
-#include <iostream>
+#include <spdlog/spdlog.h>
+
 #include "commands/help/help.h"
 
-int HelpCommand::run() {
-    std::cout << "pkgbridge help:\n";
-    std::cout << "  help\n";
-    std::cout << "  in-gentoo\n";
-    std::cout << "  out-pkgbridge\n";
+CommandInfo HelpCommand::info() const {
+    return {
+        "help",
+        "Show help menu",
+        {"-h", "--help"},
+        {"pkgbridge help"}
+    };
+}
+
+int HelpCommand::run(const AppContext& ctx) {
+    if (ctx.verbose) {
+        spdlog::info("[HelpCommand::run]");
+    }
+
+    spdlog::info("pkgbridge help:");
+
+    for (const auto& [name, cmd] : CommandRegistry::all()) {
+        auto info = cmd->info();
+
+        spdlog::info("  {} - {}", info.name, info.description);
+    }
+
     return 0;
 }
+
+REGISTER_COMMAND(HelpCommand);
