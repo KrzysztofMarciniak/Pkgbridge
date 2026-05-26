@@ -1,6 +1,6 @@
 #pragma once
 
 class PackageService {
-public:
-    static void loadDummy();
+       public:
+        static void loadDummy();
 };
